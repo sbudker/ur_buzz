@@ -5,7 +5,7 @@
 <h3>Application Setup</h3>
 <pre>
 	<code>
-		"# Move to the desired workspace directory
+		# Move to the desired workspace directory
 		$ cd ~/workspace
 		# Clone the GitHub project
 		$ git clone https://github.com/sbudker/ur_buzz.git
@@ -14,6 +14,6 @@
 		# Make any necessary database migrations
 		$ rails db:migrate
 		# Run the rails server localy
-		$ rails s"
+		$ rails s
 	</code>
 </pre>
