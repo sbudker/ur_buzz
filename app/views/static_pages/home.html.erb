@@ -1,11 +1,28 @@
+<% if logged_in? %>
+<div class="row">
+	<aside class="col-md-4">
+		<section class="user_info">
+			<%= render 'shared/user_info' %>
+		</section>
+		<section class="micropost_form">
+			<%= render 'shared/micropost_form' %>
+		</section>
+	</aside>
+	<div class="col-md-8">
+		<h3>Micropost Feed</h3>
+		<%= render 'shared/feed' %>
+	</div>
+</div>
+<% else %>
 <div class="center jumbotron">
-  <h1>Welcome to UR Event Feed</h1>
+	<h1>Welcome to UR Event Feed</h1>
 
-  <h2>
-    The hottest web application at the University of Rochester!
-  </h2>
+	<h2>
+		The hottest web application at the University of Rochester!
+	</h2>
 
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
 
 <%= link_to image_tag("UR_BUZZ_Logo.png", alt: "UR BUZZ logo")%>
+<% end %>

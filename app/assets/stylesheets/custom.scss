@@ -1,7 +1,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* universal */
+/* mixins, variables, etc. */
+
+$ur-yellow: #FFFF00;
+$ur-blue: #428bca;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+
+
+/* universal css */
 
 body {
   padding-top: 60px;
@@ -17,9 +30,10 @@ textarea {
 
 .center {
   text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
+}
+
+.center h1 {
+  margin-bottom: 10px;
 }
 
 /* typography */
@@ -36,7 +50,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.5em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -54,16 +68,17 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
+  font-size: 1.6em;
+  color: $ur-yellow;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-  &:hover {
-    color: #fff;
-    text-decoration: none;
-  }
+}
+
+#logo:hover {
+  color: $ur-blue;
+  text-decoration: none;
 }
 
 /* footer */
@@ -76,7 +91,7 @@ footer {
 }
 
 footer a {
-  color: #555;
+  color: $ur-blue;
 }
 
 footer a:hover {
@@ -95,6 +110,16 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 15px;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }
 
 /* sidebar */
@@ -140,7 +165,7 @@ input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
-  //@include box_sizing;
+  @include box_sizing;
 }
 
 input {
@@ -176,6 +201,8 @@ input {
   margin-left: 0;
 }
 
+/* Users index */
+
 .users {
   list-style: none;
   margin: 0;
@@ -183,5 +210,52 @@ input {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+/* microposts */
+
+.microposts {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
   }
 }

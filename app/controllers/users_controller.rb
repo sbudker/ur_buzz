@@ -7,29 +7,30 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def new
     @user = User.new
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      flash[:success] = "Thanks for signing up!"
+      redirect_to user_url(@user)
     else
       render 'new'
     end
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -52,16 +53,9 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
-    
-        # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-    
+
+    # Before filters
+
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
