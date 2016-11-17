@@ -264,6 +264,7 @@ input {
     margin-top: 5em;
     padding-top: 0;
   }
+
   .field {
     display: block;
     margin-left: 60px;
@@ -272,6 +273,11 @@ input {
       padding: 5px 0;
     }
   }
+
+.content-headers {
+  
+}
+
   .timestamp {
     color: $gray-light;
     display: block;
