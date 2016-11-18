@@ -15,6 +15,7 @@
   <div class="col-md-8">
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <%= will_paginate @microposts%>
       <ol id="microposts_list" class="microposts">
         <%= render @microposts %>
       </ol>

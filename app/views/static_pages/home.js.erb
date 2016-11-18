@@ -1,6 +1,4 @@
+//appends data from the url received from the script in users.coffee
 $('#the_feed').append('<%= j render(@feed_items) %>');
-<% if @feed_items.next_page %>
-    $('.pagination').replaceWith('<%= j will_paginate(@feed_items) %>');
-<% else %>
-    $('.pagination').remove();
-<% end %>
+//updates the pagination element with the appropriate links
+$('.pagination').replaceWith('<%= j will_paginate(@feed_items) %>');
