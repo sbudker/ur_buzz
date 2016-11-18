@@ -1,14 +1,18 @@
 <%= form_for(@micropost, html: { multipart: true }) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  
   <div class="field">
-    <%= f.text_field :eventDate, placeholder: "Add a date" %>
+    <%= f.text_field :eventDate, placeholder: "Add a Date", class: "datepicker" %>
   </div>
-    <div class="field">
-    <%= f.text_field :eventDate, placeholder: "Add a location" %>
-  </div>
+  
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    <%= f.text_field :location, placeholder: "Add a location", class: "form-control" %>
   </div>
+
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Describe your event!", class: "form-control" %>
+  </div> 
+  
   <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
@@ -21,5 +25,9 @@
     if (size_in_megabytes > 5) {
       alert('Maximum file size is 5MB. Please choose a smaller file.');
     }
+  });
+
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
   });
 </script>
