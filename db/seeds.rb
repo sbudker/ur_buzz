@@ -24,8 +24,10 @@ end
 
 users = User.order(:created_at).take(6)
 50.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content) }
+  eventDate = rand(1..11).to_s + "/" + rand(1..31).to_s + "/" "2016"
+  location = ["Rush Rhees", "Gleason Library", "Douglas Dining Hall", "Lovejoy Hall"].sample()
+  content = Faker::Lorem.sentence(10)
+  users.each { |user| user.microposts.create!(eventDate: eventDate, location: location, content: content) }
 end
 
 # Seed data for relationships
