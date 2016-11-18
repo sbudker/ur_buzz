@@ -1,6 +1,4 @@
+//appends data from the url received from the script in users.coffee
 $('#microposts_list').append('<%= j render(@microposts) %>');
-<% if @microposts.next_page %>
-    $('.pagination').replaceWith('<%= j will_paginate(@microposts) %>');
-<% else %>
-    $('.pagination').remove();
-<% end %>
+//updates the pagination element with the appropriate links
+$('.pagination').replaceWith('<%= j will_paginate(@microposts) %>');
