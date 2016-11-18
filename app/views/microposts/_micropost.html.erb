@@ -3,14 +3,13 @@
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   
   <span class="content-headers">
-  	<p><br></p>
-    <p>
-       <b> Event Date: </b> <%= micropost.eventDate %>
-    </p>
-    <p>
-       <b>Event Location: </b> <%= micropost.location %>
-    </p>
-    </span>
+   <br>
+   <%= micropost.eventDate %>
+   <br>
+   <%= micropost.location %>
+   <br>
+  </span>
+
   <span class="content">
     <%= micropost.content %>
   	<%= image_tag micropost.picture.url if micropost.picture? %>
