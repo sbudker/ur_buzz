@@ -1,0 +1,4 @@
+//appends data from the url received from the script in users.coffee
+$('#the_feed').append('<%= j render(@feed_items) %>');
+//updates the pagination element with the appropriate links
+$('.pagination').replaceWith('<%= j will_paginate(@feed_items) %>');

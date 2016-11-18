@@ -12,8 +12,26 @@
 		</section>
 	</aside>
 	<div class="col-md-8">
-		<h3>Micropost Feed</h3>
-		<%= render 'shared/feed' %>
+		<h3>Your Events!</h3>
+    <div class="row">
+      <%= will_paginate @feed_items %>
+      <%= form_tag search_path, :method => 'get', :id => "micropost_search" do %>
+        <div class="form-group">
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search..." %>
+            <span class = "input-group-btn">
+                <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                    <i class="glyphicon glyphicon-search"></i>
+                <% end %>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+		<ol id="the_feed" class="microposts">
+			<%= render 'shared/feed' %>
+		</ol>
+		<%= will_paginate @feed_items %>
 	</div>
 </div>
 <% else %>
