@@ -13,7 +13,8 @@ User.create!(name:  "Test User",
              admin: true)
 
 99.times do |n|
-  name  = Faker::Name.name
+  name  = [Faker::StarWars.character, Faker::StarWars.droid, Faker::Pokemon.name,
+           Faker::GameOfThrones.character, Faker::Superhero.name].sample
   email = "example-#{n+1}@email.org"
   password = "password"
   User.create!(name:  name,
@@ -25,8 +26,8 @@ end
 users = User.order(:created_at).take(6)
 50.times do
   eventDate = rand(1..11).to_s + "/" + rand(1..31).to_s + "/" "2016"
-  location = ["Rush Rhees", "Gleason Library", "Douglas Dining Hall", "Lovejoy Hall"].sample()
-  content = Faker::Lorem.sentence(10)
+  location = [Faker::StarWars.planet, Faker::GameOfThrones.city, Faker::Space.planet].sample
+  content = [Faker::Hipster.paragraph, Faker::StarWars.quote, Faker::ChuckNorris.fact].sample
   users.each { |user| user.microposts.create!(eventDate: eventDate, location: location, content: content) }
 end
 

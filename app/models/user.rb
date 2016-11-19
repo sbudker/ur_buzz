@@ -63,7 +63,8 @@ class User < ApplicationRecord
   # if there is a search value, find micropost with content matching search string, else return normal feed
   def search(search)
     if search
-      Micropost.where('content LIKE ?', "%#{search}%")
+      feed.where('content LIKE ? OR eventDate LIKE ? OR location LIKE ?',
+                 "%#{search}%", "%#{search}%", "%#{search}%")
     else
       feed
     end
