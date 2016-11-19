@@ -25,7 +25,7 @@ end
 
 users = User.order(:created_at).take(6)
 50.times do
-  eventDate = rand(1..11).to_s + "/" + rand(1..31).to_s + "/" "2016"
+  eventDate = Date.new(2016, 10, 3)
   location = [Faker::StarWars.planet, Faker::GameOfThrones.city, Faker::Space.planet].sample
   content = [Faker::Hipster.paragraph, Faker::StarWars.quote, Faker::ChuckNorris.fact].sample
   users.each { |user| user.microposts.create!(eventDate: eventDate, location: location, content: content) }
