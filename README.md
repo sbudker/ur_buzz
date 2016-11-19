@@ -13,7 +13,7 @@
 		$ bundle install --without production
 		# Make any necessary database migrations
 		$ rails db:migrate
-		# Run the rails server localy
+		# Run the rails server locally
 		$ rails s
 	</code>
 </pre>
