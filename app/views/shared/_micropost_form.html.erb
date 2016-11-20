@@ -1,22 +1,22 @@
 <%= form_for(@micropost, html: { multipart: true }) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  
-  <div class="field">
-    <%= f.text_field :eventDate, placeholder: "Add a Date", class: "datepicker" %>
-  </div>
-  
-  <div class="field">
-    <%= f.text_field :location, placeholder: "Add a location", class: "form-control" %>
-  </div>
+    <%= render 'shared/error_messages', object: f.object %>
 
-  <div class="field">
-    <%= f.text_area :content, placeholder: "Describe your event!", class: "form-control" %>
-  </div> 
-  
-  <%= f.submit "Post", class: "btn btn-primary" %>
-  <span class="picture">
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-  </span>
+    <div class="field">
+          <%= f.text_field :eventDate, placeholder: "Add a Date", id: "datetimepicker1", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :location, placeholder: "Add a location", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_area :content, placeholder: "Describe your event!", class: "form-control" %>
+    </div>
+
+    <%= f.submit "Post", class: "btn btn-primary" %>
+    <span class="picture">
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    </span>
 <% end %>
 
 <script type="text/javascript">
@@ -27,7 +27,9 @@
     }
   });
 
-  $(document).ready(function(){
-    $('.datepicker').datepicker();
+  $(function () {
+    $('#datetimepicker1').datetimepicker({
+      format: 'YYYY-MM-DD HH:mm'
+    });
   });
 </script>

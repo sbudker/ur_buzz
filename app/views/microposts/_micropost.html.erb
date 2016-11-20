@@ -4,9 +4,9 @@
   
   <span class="content-headers">
    <br>
-   <%= micropost.eventDate %>
-   <br>
-   <%= micropost.location %>
+    <%= micropost.eventDate.strftime("Date: %m/%d/%Y")  %>
+    <%= micropost.eventDate.strftime("Time: %I:%M%p")  %>
+    Location: <%= micropost.location %>
    <br>
   </span>
 
