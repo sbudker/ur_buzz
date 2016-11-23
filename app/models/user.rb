@@ -54,10 +54,9 @@ class User < ApplicationRecord
 
   #This "?" is to escape the id in order to avoid SQL injection
   def feed
-    following_ids = "SELECT followed_id FROM relationships
-    WHERE  follower_id = :user_id"
-    Micropost.where("user_id IN (#{following_ids})
-      OR user_id = :user_id", user_id: id)
+    following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+    Micropost.unscoped.all.where("(user_id IN (#{following_ids}) OR user_id = :user_id) AND (eventDate >= :date_now_yesterday)",
+                                 user_id: id, date_now_yesterday: DateTime.now.advance(days: -1)).order("eventDate ASC")
   end
 
   # if there is a search value, find micropost with content matching search string, else return normal feed
