@@ -13,6 +13,13 @@ class MicropostsController < ApplicationController
 		end
 	end
 
+	def attendee
+		@title = "Attendees"
+    	@micropost = Micropost.find(params[:id])
+    	@people = @micropost.attendee.paginate(page: params[:page])
+		render 'show_attendee'
+	end
+
 	def destroy
 		@micropost.destroy
 		flash[:success] = "Micropost deleted"

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119224143) do
+ActiveRecord::Schema.define(version: 20161202203734) do
+
+  create_table "attends", force: :cascade do |t|
+    t.integer  "attending_id"
+    t.integer  "attendee_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["attendee_id"], name: "index_attends_on_attendee_id"
+    t.index ["attending_id", "attendee_id"], name: "index_attends_on_attending_id_and_attendee_id", unique: true
+    t.index ["attending_id"], name: "index_attends_on_attending_id"
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"

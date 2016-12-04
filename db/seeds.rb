@@ -38,3 +38,12 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+#Seed data for attending
+users = User.all
+user = users.first
+user2 = users.find(2)
+events = Micropost.all
+attending = events[2..50]
+attending.each { |attending| user.attend(attending)}
+attending.each { |attending| user2.attend(attending)}
