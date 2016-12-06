@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :microposts, only: [:create, :edit, :destroy]
+  resources :microposts, only: [:create, :edit, :update, :destroy]
   resources :relationships,       only: [:create, :destroy]
 
 end
