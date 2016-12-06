@@ -2,7 +2,6 @@
 
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
-  get '/contact', to: 'static_pages#contact'
   get '/signup', to: 'users#new'
   post '/signup',  to: 'users#create'
   get '/login', to: 'sessions#new'
@@ -10,6 +9,9 @@
   delete '/logout', to: 'sessions#destroy'
 
   get '/search', to: 'static_pages#home'
+
+  get 'contact', to: 'messages#new', as: 'contact'
+  post 'contact', to: 'messages#create'
 
   resources :users do
     member do
