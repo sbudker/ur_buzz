@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+;Rails.application.routes.draw do
 
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
@@ -17,7 +17,20 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users do
+    member do
+      get :attending
+    end
+  end
+
+  resources :microposts do
+    member do
+      get :attendee
+    end
+  end
+
   resources :microposts, only: [:create, :edit, :update, :destroy]
   resources :relationships,       only: [:create, :destroy]
+  resources :attends, only: [:create, :destroy]
 
 end

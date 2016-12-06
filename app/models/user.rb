@@ -9,6 +9,11 @@ class User < ApplicationRecord
   dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :events_attending, class_name: "Attend",
+  foreign_key: "attendee_id",
+  dependent: :destroy
+  has_many :attending, through: :events_attending, source: :attending
+
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
 
@@ -79,6 +84,18 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def attend(micropost)
+    events_attending.create(attending_id: micropost.id)
+  end
+
+  def unattend(micropost)
+    events_attending.find_by(attending_id: micropost.id).destroy
+  end
+
+  def attending?(micropost)
+    attending.include?(micropost)
   end
 
 end

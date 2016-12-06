@@ -69,9 +69,17 @@ class UsersController < ApplicationController
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
+    @events = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
+
+  def attending
+    @title = "Attending"
+    @user = User.find(params[:id])
+    @events = @user.attending.paginate(page: params[:page])
+    render 'show_attending'
+  end
+  helper_method :attending
 
   private
 

@@ -1,0 +1,10 @@
+<% provide(:title, @title) %>
+    <h3><%= @title %></h3>
+
+<% if @people.any? %>
+      <ul class="users follow">
+        <%= render @people %>
+      </ul>
+<% else %>
+<p>No one is attending this event yet.</p>
+<% end %>

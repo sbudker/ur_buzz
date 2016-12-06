@@ -18,13 +18,20 @@ class MicropostsController < ApplicationController
 	end
 
 	def update
-    @micropost = Micropost.find(params[:id])
+	   @micropost = Micropost.find(params[:id])
     if @micropost.update_attributes(micropost_params)
       redirect_back_or root_url
     else
       render 'edit'
     end
   end
+
+	def attendee
+		@title = "Attendees"
+    	@micropost = Micropost.find(params[:id])
+    	@people = @micropost.attendee.paginate(page: params[:page])
+		render 'show_attendee'
+	end
 
 	def destroy
 		@micropost.destroy

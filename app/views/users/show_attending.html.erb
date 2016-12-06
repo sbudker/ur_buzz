@@ -1,0 +1,9 @@
+<% provide(:title, @title) %>
+    <h3><%= @title %></h3>
+
+<% if @events.any? %>
+<%= render @events %>
+<% else %>
+<%= @user.name %>
+<p>is not attending any events.</p>
+<% end %>
