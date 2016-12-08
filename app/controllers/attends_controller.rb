@@ -4,11 +4,12 @@ class AttendsController < ApplicationController
 	def create
 		event = Micropost.find(params[:attending_id])
     	current_user.attend(event)
-    	#redirect_to 
+    	redirect_to :back 
 	end
 
 	def destroy
 		event = Micropost.find(params[:attending_id])
     	current_user.unattend(event)
+    	redirect_to :back
 	end
 end
