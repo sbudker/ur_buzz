@@ -1,0 +1,14 @@
+<% provide(:title, "Contact Us") %>
+<h1>Contact</h1>
+<%= form_for @message, url: contact_path do |message_form| %>
+    <%= message_form.label :name %>
+    <%= message_form.text_field :name, class: "form-control", placeholder: "Your Name" %>
+
+    <%= message_form.label :email %>
+    <%= message_form.email_field :email, class: "form-control", placeholder: "Your Email"%>
+
+    <%= message_form.label :text_area, "Message Content" %>
+    <%= message_form.text_area :content, class: "form-control", placeholder: "Your Message"%>
+
+    <%= message_form.submit "Send", class: "btn btn-primary" %>
+<% end %>
