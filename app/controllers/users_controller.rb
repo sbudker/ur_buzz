@@ -49,7 +49,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-
+  
   #will delete user from database
   def destroy
     User.find(params[:id]).destroy
