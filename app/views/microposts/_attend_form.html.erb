@@ -1,4 +1,4 @@
-  <div >
+  <div id="attend_form">
   <% if current_user.attending?(micropost) %>
     <%= render 'microposts/unattend.html.erb', :micropostId => micropost.id%>
   <% else %>

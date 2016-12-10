@@ -1,0 +1,2 @@
+$("#attend_form").html("<%= escape_javascript(render('microposts/attend.html.erb')) %>");
+$("#attendee").html('<%= @user.attending.count %>');
