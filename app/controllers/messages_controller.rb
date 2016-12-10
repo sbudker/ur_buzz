@@ -1,9 +1,11 @@
 class MessagesController < ApplicationController
 
+  # Creates an instance of a message with empty parameters
   def new
     @message = Message.new
   end
 
+  # Creates a new message with message params
   def create
     @message = Message.new(message_params)
 
@@ -19,6 +21,7 @@ class MessagesController < ApplicationController
 
   private
 
+  # The required and permitted parameters for a message
   def message_params
     params.require(:message).permit(:name, :email, :content)
   end

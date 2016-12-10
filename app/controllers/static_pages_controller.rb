@@ -1,9 +1,6 @@
 class StaticPagesController < ApplicationController
 
-  #actions have a correspoding view of the same name
-  #code within the action will generally create variables for 
-  #use in the view or tell the viewwhat to do
-  
+  # Render correct home page for logged in user or non authenticated user
   def home
   	if logged_in?
   		@micropost = current_user.microposts.build
@@ -11,12 +8,15 @@ class StaticPagesController < ApplicationController
   	end
   end
 
+  # Renders help page
   def help
   end
 
+  # Renders about page
   def about
   end
 
+  # Renders contact page
   def contact
   end
 

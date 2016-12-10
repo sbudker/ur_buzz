@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+	# Method for creating dynamic titles
 	def full_title(page_title = '')
 		base_title = "UR BUZZ"
 		if page_title == ''

@@ -1,8 +1,10 @@
 class SessionsController < ApplicationController
 
+  # Redirects to the log in page
   def new
   end
 
+  # Creates a session for the authenticated user or redirects to new
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
@@ -15,6 +17,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # Deletes the session/logs out the user
   def destroy
     log_out if logged_in?
     redirect_to root_url
