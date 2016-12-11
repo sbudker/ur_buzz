@@ -1,7 +1,7 @@
-  <div >
-  <% if current_user.attending?(micropost) %>
-    <%= render 'microposts/unattend.html.erb', :micropostId => micropost.id%>
+  <div id="<%= @micropost.id%>">
+  <% if current_user.attending?(@micropost) %>
+    <%= render 'microposts/unattend.html.erb'%>
   <% else %>
-  	<%= render 'microposts/attend.html.erb', :micropostId => micropost.id%>
+  	<%= render 'microposts/attend.html.erb'%>
   <% end %>
   </div>

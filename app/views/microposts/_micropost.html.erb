@@ -4,34 +4,33 @@
   
   <span class="content-headers">
    <br>
-    <%= micropost.eventDate.strftime("Date: %m/%d/%Y")  %>
-    <%= micropost.eventDate.strftime("Time: %I:%M%p")  %>
-    Location: <%= micropost.location %>
+   <%= micropost.eventDate.strftime("Date: %m/%d/%Y")  %>
+   <%= micropost.eventDate.strftime("Time: %I:%M%p")  %>
+   Location: <%= micropost.location %>
    <br>
-  </span>
+ </span>
 
-  <span class="content">
-    <%= micropost.content %>
-  	<%= image_tag micropost.picture.url if micropost.picture? %>
-  </span>
+ <span class="content">
+  <%= micropost.content %>
+  <%= image_tag micropost.picture.url if micropost.picture? %>
+</span>
 
+<br>
+<a href="<%= attendee_micropost_path(micropost) %>">
   <br>
+  <div id="count-<%= micropost.id %>"><%= micropost.attendee.count %> people are attending</div>
+</a>
 
-      <a href="<%= attendee_micropost_path(micropost) %>">
-  <br>
-    <%= micropost.attendee.count %> People are attending
-  </a>
+<%= render 'microposts/attend_form.html.erb', :@micropost => micropost%>
 
-    <%= render 'microposts/attend_form.html.erb', :micropost => micropost%>
+<a></a>
 
-    <a></a>
-
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-    <% if current_user?(micropost.user) %>
-      <%= link_to "edit", edit_micropost_path(micropost) %>
-      <%= link_to "delete", micropost, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
+<span class="timestamp">
+  Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+  <% if current_user?(micropost.user) %>
+    <%= link_to "edit", edit_micropost_path(micropost) %>
+    <%= link_to "delete", micropost, method: :delete,
+    data: { confirm: "You sure?" } %>
+  <% end %>
+</span>
 </li>
