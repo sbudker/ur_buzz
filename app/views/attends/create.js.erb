@@ -1,2 +1,3 @@
+// Javascript to change attend button to unatted and attending count number
 $("#<%= @micropost.id %>").html("<%= j render('microposts/unattend.html.erb') %>");
 $("#count-<%= @micropost.id %>").html('<%= @micropost.attendee.count %> people are attending');
